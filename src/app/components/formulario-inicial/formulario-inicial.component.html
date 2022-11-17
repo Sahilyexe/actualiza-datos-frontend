@@ -1,0 +1,16 @@
+
+
+
+    <div class="caja-contenedora">
+    <div class="cajita">
+        <div class="texto-principal">Actualiza tus datos</div>
+               <div class="form-floating">
+                 <input  type="text" [(ngModel)]="persona.id" (keyup)="ValidarCampo()"  class="form-control"  id="identificacion" required placeholder="x-xx-xxx">
+                 <label for="identificacion" >Identificación</label>
+        </div>
+         <button [ngClass]="desabilitado ? 'disabled' : ''" type="submit" class="boton btn"  (click)="navegarFormulario()">Iniciar actualización</button>
+     </div>
+    </div>
+    
+
+    

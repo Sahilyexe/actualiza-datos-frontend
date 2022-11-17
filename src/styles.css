@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+input:invalid{
+    border: red solid 3px;
+  }
+  select:invalid{
+    border: red solid 3px;
+  }

@@ -1,0 +1,132 @@
+  <div *ngIf="deshabilitarFormario">
+  <app-alert [tipoAlerta]="'Danger'" [mensaje]="'Complete los campos señalados'"></app-alert>
+  </div>
+  <div *ngIf="mensajePersonaNoExiste">
+  <app-alert  [tipoAlerta]="'Info'" [mensaje]="'Ud no está registrado por favor ingrese todos sus datos.'"></app-alert>
+  </div>
+<app-loading *ngIf="cargando"></app-loading>
+
+<div class="container d-flex justify-content-center align-items-center align-items-stretch">
+ 
+
+
+<div class="mb-3 contenedor" *ngIf="!success">
+ 
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Información básica
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <div>
+              <div class="form-floating mb-3">
+                <input type="text" [disabled]="!mensajePersonaNoExiste" class="form-control" id="identidicacion" [(ngModel)]="persona.id" [value]="persona.id" placeholder="Primer nombre" required>
+                <label for="floatingInput">Número Identificación</label>
+              </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="primerNombre" [(ngModel)]="persona.primerNombre" [value]="persona.primerNombre" placeholder="Primer nombre" required>
+                    <label for="floatingInput">Primer nombre</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="segundoNombre" [(ngModel)]="persona.segundoNombre" [value]="persona.segundoNombre" placeholder="Segundo nombre" >
+                    <label for="floatingPassword">Segundo nombre</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="primerApellido" [(ngModel)]="persona.primerApellido" [value]="persona.primerApellido" placeholder="Primer apellido" required>
+                    <label for="floatingPassword">Primer apellido</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="segundoApellido" [(ngModel)]="persona.segundoApellido" [value]="persona.segundoApellido" placeholder="Segundo apellido">
+                    <label for="floatingPassword">Segundo apellido</label>
+                  </div>
+               <div class="row">
+                  <div class="col"><div class="form-check" >
+                    <div><label class="form-label" >Sexo</label></div>
+                    <div *ngFor="let opcion of sexo"><label [for]="'sexo'+opcion" >{{opcion}}</label><input type="radio" [(ngModel)]="persona.sexo"  [value]="opcion" class="form-check-input" [id]="'sexo'+opcion" name="sexo" required></div>
+                </div></div>
+                  <div class="col">
+                    <div><label for="fechaNacimiento" class="form-label">Fecha nacimiento</label></div>
+                       <div><input type="date" class="form-control" id="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento" [value]="persona.fechaNacimiento" required></div> 
+                    </div>
+                  <div class="col">
+                    <div><label for="estadoCivil" class="form-label">Estado civil</label>
+                        <select id="estadoCivil" class="form-select mb-3" aria-label=".form-select-sm" [(ngModel)]="persona.estadoCivil" required>
+                            <option *ngFor="let opcion of estadoCivil" [value]="opcion">{{opcion}}</option>
+                        </select></div>
+                  </div>
+               </div>  
+            </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Información transaccional
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInput" [(ngModel)]="persona.ingresoMensual" placeholder="Ingreso mensual" required>
+                <label for="floatingInput">Monto ingreso mensual</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInput" [(ngModel)]="persona.egresoMensual" placeholder="Engreso mensual" required>
+                <label for="floatingInput">Monto engreso mensual</label>
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Términos y condiciones
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <div class="form-check mb-3"> 
+            He leído y acepto los términos y condiciones
+        </div>
+         <div class="form-check mb-3"> 
+            <input type="checkbox" class="form-check-input" id="flexCheckDefault" required>
+            <label class="form-check-label" for="flexCheckDefault">Acepto</label>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  <button 
+      (click)="actualizar()" 
+      [disabled]="validarCampos(persona.id) 
+               || validarCampos(persona.primerNombre)
+               || validarCampos(persona.primerApellido)
+               || validarCampos(persona.sexo)
+               || validarCampos(persona.estadoCivil)
+               || validarCampos(persona.ingresoMensual)
+               || validarCampos(persona.egresoMensual)"
+                type="submit" 
+                class="btn btn-success boton-terminar">
+                Actualizar
+    </button>
+</div>
+</div>
+<div class="mb-3 d-flex justify-content-center align-self-center">
+<div class="card" *ngIf="success">
+  <div class="card-header">
+    Mensaje:
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>Felicitaciones, ya estas acualizado!</p>
+      <button class="btn btn-success" (click)="NavegarInicio()">Ir al inicio</button>
+    </blockquote>
+  </div>
+</div>
+</div>

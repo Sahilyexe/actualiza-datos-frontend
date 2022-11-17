@@ -1,0 +1,27 @@
+<div [ngSwitch]="tipoAlerta">
+   <div *ngSwitchCase="'Danger'" class="alert alert-danger d-flex align-items-center m-3 animated fadeIn" role="alert">
+       <svg class="bi flex-shrink-0 me-2" width="24" height="26" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+       <div>
+           {{mensaje}}
+       </div>
+      </div>
+       <div *ngSwitchCase="'Warning'" class="alert alert-warning d-flex align-items-center m-3" role="alert">
+           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+           <div>
+               {{mensaje}}
+           </div>
+       </div>
+       <div *ngSwitchCase="'Success'" class="alert alert-success d-flex align-items-center m-3" role="alert">
+           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+           <div>
+               {{mensaje}}
+           </div>
+       </div>
+       <div *ngSwitchCase="'Info'" class="alert alert-primary d-flex align-items-center m-3" role="alert">
+           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+           <div>
+               {{mensaje}}
+           </div>
+       </div>
+   
+</div>
