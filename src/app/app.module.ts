@@ -10,6 +10,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './shared/alert/alert.component';
 import { LoadingComponent } from './shared/loading/loading.component'
+import { CallbackComponent } from './components/callback/callback.component'
 
 
 
@@ -20,7 +21,8 @@ import { LoadingComponent } from './shared/loading/loading.component'
     FormularioInicialComponent,
     FormularioActualizacionDatosComponent,
     AlertComponent,
-    LoadingComponent
+    LoadingComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
