@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  url:'url del apigategay generado con el template'
+  url:'url del apigategay generado con el template',
+  urlAPiAutorizer: '',
+  urlUICognito:''
 };

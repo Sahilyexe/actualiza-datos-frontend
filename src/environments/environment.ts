@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   urlDes:'http://127.0.0.1:3000/',
-  url:'url del apigategay generado con el template'
+  url:'url del apigategay generado con el template',
+  urlAPiAutorizer: 'Se coloca el endpoint del autorizador',
+  urlUICognito:'se coloca la interfaz de congnito'
 };
 
 /*

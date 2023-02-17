@@ -10,27 +10,19 @@ import { map, catchError } from 'rxjs/operators';
 export class AuthenticationService {
    item:any={}
    token:string=""
-  constructor(private http: HttpClient,
-              ) {
-    console.log('Se levanta el servicio')
+  constructor(private http: HttpClient) {
    }
 
    getAuthorizer() {
       this.token= sessionStorage.getItem('token')!
+      if(this.token===undefined || this.token===null)this.token=""
+
       const headers = new HttpHeaders({
          'Authorization': `${this.token.trimEnd().trimStart()}`,
 
        });
-   
-   if(this.token===undefined || this.token===null)this.token=""
-   console.log('Bearer '+this.token)
-
-      return this.http.get('https://uagbdkrmy3.execute-api.us-east-1.amazonaws.com/test/authorizacion',{headers:headers})
+         return this.http.get(environment.urlAPiAutorizer,{headers:headers})
       
    }
   
 }
-function throwError(error: any): any {
-   throw new Error('Function not implemented.');
-}
-

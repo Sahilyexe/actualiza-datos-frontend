@@ -11,13 +11,9 @@ export class CallbackComponent implements OnInit {
   constructor(private router:Router) { 
   this.autentication= location.href.split('=')[1].split('&')[0]
 
-    console.log('devuelto'+this.autentication)
    sessionStorage.setItem('token',this.autentication)
    this.router.navigate(['inicio']);
-
   }
-
   ngOnInit(): void {
   }
-
 }
