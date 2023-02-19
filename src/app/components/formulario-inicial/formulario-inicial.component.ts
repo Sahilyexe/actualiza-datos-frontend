@@ -19,28 +19,29 @@ export class FormularioInicialComponent  {
    patron:string;
    problema: boolean;
 
-  constructor(private router:Router, private _authorizer: AuthenticationService) {  
+   constructor(private router:Router, private _authorizer: AuthenticationService) {  
     this.desabilitado = true;
     this.identificacion= "";
     this.patron = '^[1-9]{1}-[0-9]{3,4}-[0-9]{3-4}$'
     this.problema = false
-
-
-    this._authorizer.getAuthorizer().subscribe( 
-    {
-      error(err:HttpErrorResponse){
-        
-    if(err.status !=200) window.location.href = environment.urlUICognito;
-    } ,
-    complete() { 
-      console.log('complete')
-    },
-    next(val){ 
-       console.log('next')    
   }
-      }
-    )
+  async ngOnInit() {
+    await this._authorizer.getAuthorizer().subscribe( 
+      {
+        error(err:HttpErrorResponse){
+          
+      if(err.status !=200) window.location.href = environment.urlUICognito;
+      } ,
+      complete() { 
+        console.log('complete')
+      },
+      next(val){ 
+         console.log('next')    
+    }
+        }
+      )
   }
+
 ValidarCampo(){
   let identificacion = this.persona.id
   console.log(identificacion);
