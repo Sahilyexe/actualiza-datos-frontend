@@ -9,9 +9,9 @@ Con esta aplicación actualiza tus datos de forma muy fácil. Esta basada en arq
 - Ejecutar `npm install`
 - Tienes 2 opciones correr el proyecto local
    - Local: 
-      - Ejecuta `ng serve -o`
+      - Ejecuta `npm run start`
    - En el la nube  
-      - Ejecuta `ng build --configuration=production --aot=true`
+      - Ejecuta `npm run build --configuration=production --aot=true`
       - Ejecuta para subir al bucket `aws s3 cp ./dist/actualizacion-datos/ s3://<nombre bucket> --recursive`
       - Abre el archivo `index.html`  
 

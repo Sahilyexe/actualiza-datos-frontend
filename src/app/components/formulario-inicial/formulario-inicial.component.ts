@@ -26,20 +26,20 @@ export class FormularioInicialComponent  {
     this.problema = false
   }
   async ngOnInit() {
-    await this._authorizer.getAuthorizer().subscribe( 
-      {
-        error(err:HttpErrorResponse){
+    // await this._authorizer.getAuthorizer().subscribe( 
+    //   {
+    //     error(err:HttpErrorResponse){
           
-      if(err.status !=200) window.location.href = environment.urlUICognito;
-      } ,
-      complete() { 
-        console.log('complete')
-      },
-      next(val){ 
-         console.log('next')    
-    }
-        }
-      )
+    //   if(err.status !=200) window.location.href = environment.urlUICognito;
+    //   } ,
+    //   complete() { 
+    //     console.log('complete')
+    //   },
+    //   next(val){ 
+    //      console.log('next')    
+    // }
+    //     }
+    //   )
   }
 
 ValidarCampo(){
